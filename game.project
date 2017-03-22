@@ -1,20 +1,40 @@
 [project]
-title = My project
+title = Gyro
 version = 0.1
+dependencies = https://github.com/defold/extension-camera/archive/master.zip
 
 [bootstrap]
-main_collection = /main/main.collectionc
+main_collection = /example/example.collectionc
+render = /example/render/example.renderc
 
 [input]
 game_binding = /input/game.input_bindingc
 
 [display]
-width = 1280
-height = 720
+width = 640
+height = 1136
 
 [physics]
 scale = 0.02
 
 [script]
 shared_state = 1
+
+[ios]
+bundle_identifier = com.britzl.gyro
+launch_image_320x480 = 
+launch_image_640x960 = 
+launch_image_640x1136 = 
+launch_image_750x1334 = 
+launch_image_768x1024 = 
+launch_image_1536x2048 = 
+launch_image_1024x768 = 
+launch_image_2208x1242 = 
+launch_image_1242x2208 = 
+launch_image_2048x1536 = 
+launch_image_2048x2732 = 
+launch_image_2732x2048 = 
+
+[android]
+package = com.britzl.gyro
 

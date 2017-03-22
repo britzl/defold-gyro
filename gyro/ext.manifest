@@ -1,0 +1,10 @@
+name: "Gyro"
+
+platforms:
+  arm64-ios:
+    context:
+        frameworks: ["CoreMotion"]
+
+  armv7-ios:
+    context:
+        frameworks: ["CoreMotion"]

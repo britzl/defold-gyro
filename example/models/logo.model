@@ -1,0 +1,4 @@
+mesh: "/example/models/cube.dae"
+material: "/builtins/materials/model.material"
+textures: "/example/images/logo.png"
+name: "unnamed"
