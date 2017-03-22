@@ -3,7 +3,7 @@ function init(self)
 	msg.post("#camera", "acquire_camera_focus")
 	
 	-- Generate a bunch of Defold logos around this game object
-	for i=1,10 do
+	for i=1,100 do
 		local angle = math.rad(math.random(360))
 		local pos = vmath.vector3(20 * math.sin(angle), 20 * math.cos(angle), math.random(15, 25))
 		local rot = vmath.quat_rotation_x(math.rad(90))

@@ -6,7 +6,6 @@ You can use the Gyro extension in your own project by adding this project as a [
 
 https://github.com/britzl/defold-gyro/archive/master.zip
 
-
 ## Usage
     function init(self)
       gyro.start(function(self, self, pitch, roll, yaw, quatx, quaty, quatz, quatw)
@@ -17,6 +16,10 @@ https://github.com/britzl/defold-gyro/archive/master.zip
     function final(self)
       gyro.stop()
     end
+
+
+## Example
+![](docs/gyro_480.gif)
 
 ## Limitations
 The extension currently only supports iOS.
