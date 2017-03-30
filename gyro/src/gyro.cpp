@@ -29,22 +29,22 @@ static void LuaInit(lua_State* L) {
     assert(top == lua_gettop(L));
 }
 
-dmExtension::Result AppInitializeExtension(dmExtension::AppParams* params) {
+dmExtension::Result AppInitializeGyroExtension(dmExtension::AppParams* params) {
     return dmExtension::RESULT_OK;
 }
 
-dmExtension::Result InitializeExtension(dmExtension::Params* params) {
+dmExtension::Result InitializeGyroExtension(dmExtension::Params* params) {
     LuaInit(params->m_L);
     printf("Registered %s Extension\n", MODULE_NAME);
     return dmExtension::RESULT_OK;
 }
 
-dmExtension::Result AppFinalizeExtension(dmExtension::AppParams* params) {
+dmExtension::Result AppFinalizeGyroExtension(dmExtension::AppParams* params) {
     return dmExtension::RESULT_OK;
 }
 
-dmExtension::Result FinalizeExtension(dmExtension::Params* params) {
+dmExtension::Result FinalizeGyroExtension(dmExtension::Params* params) {
     return dmExtension::RESULT_OK;
 }
 
-DM_DECLARE_EXTENSION(Gyro, LIB_NAME, AppInitializeExtension, AppFinalizeExtension, InitializeExtension, 0, 0, FinalizeExtension)
+DM_DECLARE_EXTENSION(Gyro, LIB_NAME, AppInitializeGyroExtension, AppFinalizeGyroExtension, InitializeGyroExtension, 0, 0, FinalizeGyroExtension)
