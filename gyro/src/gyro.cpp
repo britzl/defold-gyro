@@ -5,13 +5,28 @@
 #define LIB_NAME "Gyro"
 #define MODULE_NAME "gyro"
 
+
+struct Gyro {
+    GyroListener m_Listener;
+    GyroData m_Data;
+
+    int m_Started;
+} g_Gyro;
+
 static int Start(lua_State* L) {
-    Gyro_PlatformStart(L);
+    Gyro* gyro = &g_Gyro;
+    gyro->m_Started = 1;
+
+    Gyro_SetListener(&gyro->m_Listener, L);
+    Gyro_PlatformStart(&gyro->m_Data);
     return 0;
 }
 
 static int Stop(lua_State* L) {
-    Gyro_PlatformStop(L);
+    Gyro* gyro = &g_Gyro;
+    gyro->m_Started = 0;
+
+    Gyro_PlatformStop();
     return 0;
 }
 
@@ -47,4 +62,13 @@ dmExtension::Result FinalizeGyroExtension(dmExtension::Params* params) {
     return dmExtension::RESULT_OK;
 }
 
-DM_DECLARE_EXTENSION(Gyro, LIB_NAME, AppInitializeGyroExtension, AppFinalizeGyroExtension, InitializeGyroExtension, 0, 0, FinalizeGyroExtension)
+dmExtension::Result UpdateGyroExtension(dmExtension::Params* params) {
+    Gyro* gyro = &g_Gyro;
+    if (gyro->m_Started == 1) {
+        Gyro_InvokeListener(&gyro->m_Listener, &gyro->m_Data);
+    }
+
+    return dmExtension::RESULT_OK;
+}
+
+DM_DECLARE_EXTENSION(Gyro, LIB_NAME, AppInitializeGyroExtension, AppFinalizeGyroExtension, InitializeGyroExtension, UpdateGyroExtension, 0, FinalizeGyroExtension)

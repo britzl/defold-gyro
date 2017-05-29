@@ -11,7 +11,7 @@ function init(self)
 	end
 	
 	if gyro then
-		gyro.start(function(self, pitch, roll, yaw, quatx, quaty, quatz, quatw)
+		gyro.start(function(self, quatx, quaty, quatz, quatw)
 			local quat = vmath.quat(quatx, quaty, quatz, quatw)
 			go.set_rotation(quat)
 		end)
