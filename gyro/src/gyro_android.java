@@ -37,7 +37,7 @@ class GyroExtension implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (event.sensor.getType() == Sensor.TYPE_GAME_ROTATION_VECTOR) {
+		if (event.sensor.getType() == Sensor.TYPE_GAME_ROTATION_VECTOR || event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
 			// Note: SensorManager.getQuaternionFromVector doesn't return values
 			// that I was able to use as they were. The values seemed to be device
 			// orientation dependent somehow.
@@ -51,7 +51,12 @@ class GyroExtension implements SensorEventListener {
 
 	private void start(Context context) {
 		mSensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
-		mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+			mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
+		}
+		else {
+			mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+		}
 		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_GAME);
 	}
 
