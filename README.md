@@ -11,7 +11,7 @@ https://github.com/britzl/defold-gyro/archive/master.zip
 
 ## Usage
     function init(self)
-      gyro.start(function(self, self, quatx, quaty, quatz, quatw)
+      gyro.start(function(self, quatx, quaty, quatz, quatw)
         go.set_rotation(vmath.quat(quatx, quaty, quatz, quatw))
       end)
     end
