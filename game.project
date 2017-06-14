@@ -38,3 +38,6 @@ launch_image_2732x2048 =
 [android]
 package = com.britzl.gyro
 
+[library]
+include_dirs = gyro
+
