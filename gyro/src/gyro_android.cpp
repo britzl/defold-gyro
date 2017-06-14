@@ -71,6 +71,9 @@ JNIEXPORT void JNICALL Java_com_defold_android_gyro_GyroExtension_HandleSensorCh
 	float m21 = matrix_elements[7];
 	float m22 = matrix_elements[8];
 
+    env->ReleaseFloatArrayElements(matrix , (jfloat *)matrix_elements, 0);
+    env->DeleteLocalRef(matrix);
+
 	float tr = m00 + m11 + m22;
 
 	if (tr > 0) {
