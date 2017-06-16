@@ -54,8 +54,13 @@ class GyroExtension implements SensorEventListener {
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
 			mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
 		}
-		else {
+		// Use the TYPE_ROTATION_VECTOR sensor if below Jelly Bean or if TYPE_GAME_ROTATION_VECTOR
+		// isn't available (such as on Samsung Galaxy S4 devices)
+		if (mSensor == null) {
 			mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+		}
+		if (mSensor == null) {
+			Log.w(TAG, "Unable to find a rotation sensor. The Gyro extension will not function properly without it.");
 		}
 		mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_GAME);
 	}
