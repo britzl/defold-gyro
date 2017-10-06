@@ -23,6 +23,6 @@ https://github.com/britzl/defold-gyro/archive/master.zip
 ## Example
 The project contains an example that leverages [the camera extension](https://github.com/defold/extension-camera) to create an augmented reality experience:
 
-![](docs/gyro_480.gif)
+![](http://britzl.github.io/images/gyro_480.gif)
 
 Note: The camera extension currently doesn't support Android which means that the Android example will use a static background instead of the camera feed.
