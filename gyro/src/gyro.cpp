@@ -49,8 +49,12 @@ dmExtension::Result AppInitializeGyroExtension(dmExtension::AppParams* params) {
 }
 
 dmExtension::Result InitializeGyroExtension(dmExtension::Params* params) {
-    LuaInit(params->m_L);
-    printf("Registered %s Extension\n", MODULE_NAME);
+	#if defined(DM_PLATFORM_ANDROID) || defined(DM_PLATFORM_IOS)
+    	LuaInit(params->m_L);
+	    printf("Registered %s Extension\n", MODULE_NAME);
+	#else
+	    printf("Extension %s is not supported\n", MODULE_NAME);
+	#endif
     return dmExtension::RESULT_OK;
 }
 
