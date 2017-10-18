@@ -4,7 +4,7 @@
 
 #if defined(DM_PLATFORM_ANDROID)
 
-    GyroData* g_GyroData;
+GyroData* g_GyroData;
 
 static JNIEnv* Attach()
 {

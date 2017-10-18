@@ -1,5 +1,5 @@
 # Gyro
-This is a a gyroscope extension for the [Defold game engine](http://www.defold.com).
+This is a gyroscope extension for the [Defold game engine](http://www.defold.com).
 
 ## System requirements
 The extension currently only supports iOS and Android.
