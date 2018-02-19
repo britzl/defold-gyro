@@ -1,3 +1,5 @@
+![](docs/logo.png)
+
 # Gyro
 This is a gyroscope extension for the [Defold game engine](http://www.defold.com).
 
