@@ -1,7 +1,0 @@
-mesh: "/example/models/quad.dae"
-material: "/example/materials/camera.material"
-textures: "/example/images/camera.png"
-skeleton: ""
-animations: ""
-default_animation: ""
-name: "unnamed"

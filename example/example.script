@@ -1,6 +1,7 @@
 function init(self)
 	math.randomseed(os.time())
 	msg.post("#camera", "acquire_camera_focus")
+	msg.post("@render:", "use_camera_projection")
 	
 	-- Generate a bunch of Defold logos around this game object
 	for i=1,100 do
@@ -19,10 +20,21 @@ function init(self)
 		print("Gyro extension is not available")
 	end
 
-	if camera and camera.start_capture(camera.CAMERA_TYPE_BACK, camera.CAPTURE_QUALITY_HIGH) then
-		self.cameraframe = camera.get_frame()
-		self.camerainfo = camera.get_info()
-		self.cameraheader = { width = self.camerainfo.width, height = self.camerainfo.height, type = resource.TEXTURE_TYPE_2D, format = resource.TEXTURE_FORMAT_RGB, num_mip_maps = 1 }
+	if camera then
+		camera.start_capture(camera.CAMERA_TYPE_BACK, camera.CAPTURE_QUALITY_HIGH, function(self, message)
+			if message == camera.CAMERA_STARTED then
+				print("started")
+				self.cameraframe = camera.get_frame()
+				self.camerainfo = camera.get_info()
+				self.cameraheader = { width = self.camerainfo.width, height = self.camerainfo.height, type = resource.TEXTURE_TYPE_2D, format = resource.TEXTURE_FORMAT_RGB, num_mip_maps = 1 }
+			elseif message == camera.CAMERA_STOPPED then
+				print("error")
+			elseif message == camera.CAMERA_NOT_PERMITTED then
+				print("not permitted")
+			elseif message == camera.CAMERA_ERROR then
+				print("error")
+			end
+		end)
 	else
 		print("Could not start camera capture, or camera extension is not available")
 	end

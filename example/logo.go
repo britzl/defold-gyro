@@ -1,6 +1,14 @@
-components {
+embedded_components {
   id: "model"
-  component: "/example/models/logo.model"
+  type: "model"
+  data: "mesh: \"/builtins/assets/meshes/cube.dae\"\n"
+  "material: \"/builtins/materials/model.material\"\n"
+  "textures: \"/example/images/logo.png\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"{{NAME}}\"\n"
+  ""
   position {
     x: 0.0
     y: 0.0
